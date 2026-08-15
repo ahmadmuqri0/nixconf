@@ -68,6 +68,7 @@
     stylua
     alejandra
 
+    nix-search-tv
     kitty
     starship
     lazygit
@@ -122,13 +123,22 @@
   programs.zsh.enable = true;
   programs.tmux.enable = true;
   programs.git.enable = true;
-  programs.neovim.enable = true;
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
   programs.thunar.enable = true;
 
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
