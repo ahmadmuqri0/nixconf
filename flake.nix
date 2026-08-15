@@ -12,19 +12,20 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs, 
-    noctalia, 
-    noctalia-greeter,
-    ... 
-  }: {
-    nixosConfigurations.artemis = nixpkgs.lib.nixosSystem {
-    specialArgs = { inherit inputs; };
-      modules = [
-        ./configuration.nix
-        ./hardware-configuration.nix
-      ];
+  outputs =
+    {
+      self,
+      nixpkgs,
+      noctalia,
+      noctalia-greeter,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations.artemis = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./configuration.nix
+        ];
+      };
     };
-  };
 }

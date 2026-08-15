@@ -3,7 +3,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware.nix
 
@@ -62,11 +63,10 @@
     brave
     whatsapp-electron
 
-    nil
     nixd
     lua-language-server
     stylua
-    alejandra
+    nixfmt-rfc-style
 
     nix-search-tv
     kitty
@@ -106,7 +106,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [xdg-desktop-portal-hyprland];
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 
   programs.noctalia.systemd.enable = true;
@@ -140,7 +140,7 @@
     options = "--delete-older-than 30d";
   };
 
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   system.stateVersion = "26.05";
 }
