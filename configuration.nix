@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
 
     inputs.noctalia.nixosModules.default
     inputs.noctalia-greeter.nixosModules.default
