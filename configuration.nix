@@ -3,8 +3,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     ./hardware.nix
 
@@ -30,10 +29,9 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.plymouth = {
-    enable = true;
-    theme = "bgrt";
-  };
+
+  boot.plymouth.enable = true;
+  boot.plymouth.theme = "bgrt";
 
   networking.hostName = "artemis";
   networking.networkmanager.enable = true;
@@ -62,16 +60,19 @@
 
     brave
     whatsapp-electron
+    nautilus
 
     nixd
     lua-language-server
     stylua
-    nixfmt-rfc-style
+    nixfmt
 
     nix-search-tv
     kitty
     starship
     lazygit
+    tree-sitter
+    gcc
     ripgrep
     zoxide
     bat
@@ -98,15 +99,14 @@
     xwayland.enable = true;
   };
 
-  programs.noctalia = {
-    enable = true;
-
-    recommendedServices.enable = true;
-  };
-
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+    extraPortals = with pkgs; [xdg-desktop-portal-hyprland];
+  };
+
+  programs.noctalia = {
+    enable = true;
+    recommendedServices.enable = true;
   };
 
   programs.noctalia.systemd.enable = true;
@@ -114,6 +114,13 @@
   programs.noctalia-greeter = {
     enable = true;
     greeter-args = "";
+    settings = {
+      cursor = {
+        theme = "capitaine-cursors";
+        size = 32;
+        path = "${pkgs.capitaine-cursors}/share/icons";
+      };
+    };
   };
 
   services.openssh.enable = true;
@@ -127,7 +134,6 @@
     enable = true;
     defaultEditor = true;
   };
-  programs.thunar.enable = true;
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -140,7 +146,7 @@
     options = "--delete-older-than 30d";
   };
 
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   system.stateVersion = "26.05";
 }
