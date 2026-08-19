@@ -3,7 +3,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware.nix
 
@@ -75,6 +76,7 @@
     gcc
     ripgrep
     zoxide
+    zip
     bat
     eza
     fzf
@@ -88,11 +90,15 @@
     inputs.noctalia-greeter.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    adwaita-fonts
-  ];
+  fonts = {
+    fontDir.enable = true;
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      adwaita-fonts
+      google-fonts
+    ];
 
+  };
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -101,7 +107,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [xdg-desktop-portal-hyprland];
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 
   programs.noctalia = {
@@ -146,7 +152,7 @@
     options = "--delete-older-than 30d";
   };
 
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   system.stateVersion = "26.05";
 }
