@@ -69,13 +69,15 @@
     brave
     whatsapp-electron
     nautilus
+    parsec-bin
+    proton-pass
+    teams-for-linux
 
     nixd
     lua-language-server
     stylua
     nixfmt
 
-    nix-search-tv
     kitty
     starship
     lazygit
@@ -92,6 +94,7 @@
     fd
 
     stow
+    devenv
 
   ];
 
@@ -104,6 +107,7 @@
     ];
 
   };
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
