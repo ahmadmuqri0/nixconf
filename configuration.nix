@@ -34,6 +34,16 @@
   networking.hostName = "artemis";
   networking.networkmanager.enable = true;
 
+  hardware.graphics.enable = true;
+  services.xserver.videoDriver = [ "nvidia" ];
+  hardware.nvidia.open = true;
+  hardware.nvidia.modesetting.enable = true;
+
+  hardware.nvidia.prime = {
+    intelBusId = "PCI:0@0:2:0";
+    nvidiaBusId = "PCI:1@0:0:0";
+  };
+
   users.users."muqri" = {
     isNormalUser = true;
     description = "Ahmad Muqri";
