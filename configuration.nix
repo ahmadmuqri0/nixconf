@@ -7,9 +7,6 @@
 {
   imports = [
     ./hardware.nix
-
-    inputs.noctalia.nixosModules.default
-    inputs.noctalia-greeter.nixosModules.default
   ];
 
   time.timeZone = "Asia/Kuala_Lumpur";
@@ -86,8 +83,6 @@
 
     stow
 
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-    inputs.noctalia-greeter.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   fonts = {
@@ -110,22 +105,17 @@
     extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 
-  programs.noctalia = {
-    enable = true;
-    recommendedServices.enable = true;
-  };
-
+  programs.noctalia.enable = true;
+  programs.noctalia.recommendedServices.enable = true;
   programs.noctalia.systemd.enable = true;
 
-  programs.noctalia-greeter = {
+  services.displayManager.noctalia-greeter = {
     enable = true;
-    greeter-args = "";
+
     settings = {
-      cursor = {
-        theme = "capitaine-cursors";
-        size = 32;
-        path = "${pkgs.capitaine-cursors}/share/icons";
-      };
+      cursor.theme = "capitaine-cursors";
+      cursor.size = 32;
+      cursor.path = "${pkgs.capitaine-cursors}/share/icons";
     };
   };
 
