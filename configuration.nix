@@ -72,6 +72,7 @@
     parsec-bin
     proton-pass
     teams-for-linux
+    mission-center
 
     nixd
     lua-language-server
@@ -82,9 +83,12 @@
     starship
     lazygit
     tree-sitter
-    gcc
+    net-tools
     ripgrep
     zoxide
+    lsof
+    btop
+    gcc
     zip
     bat
     eza
