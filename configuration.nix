@@ -169,7 +169,6 @@
     capitaine-cursors
 
     # --- GUI ---
-    brave
     nautilus
     mission-center
     parsec-bin
@@ -177,10 +176,12 @@
     teams-for-linux
     proton-pass
     zed-editor
+    steam
+    qbittorrent
+    firefox
 
     # --- TUI ---
-    opencode
-    helix
+    pi-coding-agent
 
     # --- Terminal & shell ---
     kitty
@@ -193,6 +194,7 @@
     eza
     fd
     ripgrep
+    hyprpicker
     btop
 
     # --- Dev: language servers & formatters ---
